@@ -19,8 +19,8 @@ public class WzwApplicationContext extends WzwDefaultListableBeanFactory impleme
     private Map<String, Object> factoryBeanObjectCache = new ConcurrentHashMap<String, Object>();
     private Map<String, WzwBeanWrapper> factoryBeanInstanceCache = new ConcurrentHashMap<String, WzwBeanWrapper>();
 
-    public WzwApplicationContext(String... configLocations) {
-        this.configLocations = configLocations;
+    public WzwApplicationContext() {
+//        this.configLocations = configLocations;
         try {
             refresh();
         } catch (Exception e) {
@@ -30,9 +30,10 @@ public class WzwApplicationContext extends WzwDefaultListableBeanFactory impleme
 
     @Override
     public void refresh() throws Exception {
-        reader = new WzwBeanDefinitionReader(this.configLocations);
+        reader = new WzwBeanDefinitionReader();
         List<WzwBeanDefinition> beanDefinitions = reader.loadBeanDefinitions();
-
+        doRegisterBeanDefinition(beanDefinitions);
+        doAutowired();
     }
 
     private void doAutowired() {
@@ -40,7 +41,7 @@ public class WzwApplicationContext extends WzwDefaultListableBeanFactory impleme
             String beanName = beanDefinitionEntry.getKey();
             if (!beanDefinitionEntry.getValue().isLazyInit()) {
                 try {
-
+                    getBean(beanName);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -114,6 +115,7 @@ public class WzwApplicationContext extends WzwDefaultListableBeanFactory impleme
                 instance = clazz.newInstance();
                 this.factoryBeanObjectCache.put(beanDefinition.getFactoryBeanName(), instance);
             }
+            return instance;
         } catch (Exception e) {
             e.printStackTrace();
         }

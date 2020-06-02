@@ -1,15 +1,18 @@
 package com.lagou.edu.ioc;
 
+import com.google.common.collect.Lists;
 import com.lagou.edu.anno.WzwAutowired;
 import com.lagou.edu.anno.WzwService;
 import com.lagou.edu.beans.WzwBeanDefinition;
 import com.lagou.edu.beans.WzwBeanWrapper;
 import com.lagou.edu.core.WzwBeanFactory;
+import com.lagou.edu.service.TransferService;
+import com.sun.istack.internal.NotNull;
 
+import java.io.File;
 import java.lang.reflect.Field;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.net.URL;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class WzwApplicationContext extends WzwDefaultListableBeanFactory implements WzwBeanFactory {
@@ -97,10 +100,22 @@ public class WzwApplicationContext extends WzwDefaultListableBeanFactory impleme
             }
             field.setAccessible(true);
             try {
-                field.set(instance, this.factoryBeanInstanceCache.get(autowiredBeanName).getWrappedInstance());
-            } catch (IllegalAccessException e) {
+                Class<?> target=Class.forName(autowiredBeanName);
+                if(target.isInterface()){
+                    field.set(instance, new WzwBeanWrapper(getInterfaceImpls(target).get(0).newInstance()));
+                }else {
+                    field.set(instance, new WzwBeanWrapper(Class.forName(autowiredBeanName).newInstance()));
+                }
+//                field.set(instance, this.factoryBeanInstanceCache.get(autowiredBeanName).getWrappedInstance());
+            } catch (IllegalAccessException | ClassNotFoundException | InstantiationException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private Class<?> getInterfaceImpls(Class<?> target){
+        if(target.){
+
         }
     }
 

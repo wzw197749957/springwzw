@@ -6,7 +6,9 @@ import com.lagou.edu.anno.WzwService;
 @WzwService
 public class HomeworkService {
     @WzwAutowired
-    private AutowireService autowireService;
+    private TransferService transferService;
 
-    public void
+    public void transfer() throws Exception {
+        transferService.transfer("123456","654321",100);
+    }
 }

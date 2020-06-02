@@ -1,5 +1,7 @@
 package com.lagou.edu.dao.impl;
 
+import com.lagou.edu.anno.WzwAutowired;
+import com.lagou.edu.anno.WzwService;
 import com.lagou.edu.pojo.Account;
 import com.lagou.edu.dao.AccountDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,10 @@ import java.sql.SQLException;
 /**
  * @author 应癫
  */
-@Repository("accountDao")
+@WzwService
 public class JdbcTemplateDaoImpl implements AccountDao {
 
-    @Autowired
+    @WzwAutowired
     private JdbcTemplate jdbcTemplate;
 
     @Override

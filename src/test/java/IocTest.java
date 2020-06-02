@@ -13,7 +13,7 @@ public class IocTest {
 
         HomeworkService homeworkService = (HomeworkService) applicationContext.getBean("homeworkService");
 
-        System.out.println(homeworkService);
+        homeworkService.transfer();
     }
 
 

@@ -1,5 +1,7 @@
 package com.lagou.edu.service.impl;
 
+import com.lagou.edu.anno.WzwAutowired;
+import com.lagou.edu.anno.WzwService;
 import com.lagou.edu.dao.AccountDao;
 import com.lagou.edu.pojo.Account;
 import com.lagou.edu.service.TransferService;
@@ -12,13 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * @author 应癫
  */
-@Service("transferService")
+@WzwService("transferService")
 @Transactional
 public class TransferServiceImpl implements TransferService {
 
 
-    @Autowired
-    @Qualifier("accountDao")
+    @WzwAutowired
     private AccountDao accountDao;
 
 

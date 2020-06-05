@@ -1,7 +1,7 @@
 package com.lagou.edu.dao.impl;
 
-import com.lagou.edu.anno.WzwAutowired;
 import com.lagou.edu.anno.WzwService;
+import com.lagou.edu.anno.WzwTransactional;
 import com.lagou.edu.dao.AccountDao;
 import com.lagou.edu.pojo.Account;
 import com.mysql.jdbc.Driver;
@@ -9,20 +9,15 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import javax.sql.DataSource;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.SQLFeatureNotSupportedException;
+import java.sql.Statement;
 import java.util.Properties;
-import java.util.logging.Logger;
 
 /**
  * @author 应癫
@@ -32,29 +27,29 @@ public class JdbcTemplateDaoImpl implements AccountDao {
 
 
     @Override
-    public Account queryAccountByCardNo(String cardNo) throws Exception {
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+    public Account queryAccountByCardNo(Connection conn, String cardNo) throws Exception {
+        Account account = new Account();
         String sql = "select * from account where cardNo=?";
-        return jdbcTemplate.queryForObject(sql, new RowMapper<Account>() {
-            @Override
-            public Account mapRow(ResultSet resultSet, int i) throws SQLException {
-                Account account = new Account();
-                account.setName(resultSet.getString("name"));
-                account.setCardNo(resultSet.getString("cardNo"));
-                account.setMoney(resultSet.getInt("money"));
-                return account;
-            }
-        }, cardNo);
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setString(1, cardNo);
+        ResultSet res = preparedStatement.executeQuery();
+        while (res.next()) {
+            account.setName(res.getString("name"));
+            account.setCardNo(res.getString("cardNo"));
+            account.setMoney(res.getInt("money"));
+        }
+        return account;
     }
 
     @Override
-    public int updateAccountByCardNo(Account account) throws Exception {
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+    @WzwTransactional
+    public void updateAccountByCardNo(Connection conn, Account account) throws Exception {
+        Statement statement = conn.createStatement();
         String sql = "update account set money=? where cardNo=?";
-        return jdbcTemplate.update(sql, account.getMoney(), account.getCardNo());
+        statement.executeUpdate(sql);
     }
 
-    private DataSource getDataSource(){
+    private DataSource getDataSource() {
         Resource resource = new ClassPathResource("jdbc.properties");
         Properties properties = null;
         try {

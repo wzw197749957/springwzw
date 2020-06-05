@@ -5,10 +5,14 @@ import com.lagou.edu.anno.WzwService;
 import com.lagou.edu.dao.AccountDao;
 import com.lagou.edu.pojo.Account;
 import com.lagou.edu.service.TransferService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
 
 
 /**
@@ -23,18 +27,21 @@ public class TransferServiceImpl implements TransferService {
     private AccountDao accountDao;
 
 
-
-
     @Override
     public void transfer(String fromCardNo, String toCardNo, int money) throws Exception {
+        Resource resource = new ClassPathResource("jdbc.properties");
+        Properties properties = PropertiesLoaderUtils.loadProperties(resource);
+        Connection conn = DriverManager.getConnection(properties.getProperty("jdbc.url")
+                , properties.getProperty("jdbc.username")
+                , properties.getProperty("jdbc.password"));
+        Account from = accountDao.queryAccountByCardNo(conn, fromCardNo);
+        Account to = accountDao.queryAccountByCardNo(conn, toCardNo);
 
-            Account from = accountDao.queryAccountByCardNo(fromCardNo);
-            Account to = accountDao.queryAccountByCardNo(toCardNo);
+        from.setMoney(from.getMoney() - money);
+        to.setMoney(to.getMoney() + money);
 
-            from.setMoney(from.getMoney()-money);
-            to.setMoney(to.getMoney()+money);
-
-            accountDao.updateAccountByCardNo(to);
-            accountDao.updateAccountByCardNo(from);
+        accountDao.updateAccountByCardNo(conn,to);
+        accountDao.updateAccountByCardNo(conn,from);
+        conn.close();
     }
 }

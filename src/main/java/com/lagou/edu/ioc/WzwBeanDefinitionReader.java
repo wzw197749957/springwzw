@@ -1,17 +1,11 @@
 package com.lagou.edu.ioc;
 
-import com.alibaba.druid.support.json.JSONUtils;
-import com.google.common.collect.Lists;
-import com.lagou.edu.anno.WzwService;
 import com.lagou.edu.beans.WzwBeanDefinition;
 import com.lagou.edu.utils.SpringUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
-import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -26,21 +20,34 @@ public class WzwBeanDefinitionReader {
     }
 
     private void doScanner(String basePackage) {
-        if(basePackage.equals("com.lagou.edu.ioc")){
+        if (basePackage.equals("com.lagou.edu.ioc")
+                || basePackage.equals("com.lagou.edu.aop")
+                || basePackage.equals("com.lagou.edu.core")
+                || basePackage.equals("com.lagou.edu.beans")) {
             return;
         }
         URL url = this.getClass().getResource("/" + basePackage.replaceAll("\\.", "/"));
         File dir = new File(url.getFile());
         //遍历包下面所有文件
-        for(File file: dir.listFiles()) {
-            if(file.isDirectory()){
+        for (File file : dir.listFiles()) {
+            if (file.isDirectory()) {
                 //递归扫描
                 doScanner(basePackage + "." + file.getName());
             } else {
-                String className = basePackage + "." + file.getName().replace(".class", "");
-                registyBeanClasses.add(className);
+                String className = trimClassName(basePackage + "." + file.getName().replace(".class", ""));
+                if(!registyBeanClasses.contains(className)){
+                    registyBeanClasses.add(className);
+                }
             }
         }
+    }
+
+    private String trimClassName(String className){
+        Integer loc = className.indexOf("$");
+        if(loc>0){
+            return className.substring(0,loc);
+        }
+        return className;
     }
 
     public Properties getConfig() {

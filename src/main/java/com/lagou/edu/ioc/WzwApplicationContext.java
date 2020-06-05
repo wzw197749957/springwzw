@@ -6,6 +6,7 @@ import com.lagou.edu.anno.WzwService;
 import com.lagou.edu.beans.WzwBeanDefinition;
 import com.lagou.edu.beans.WzwBeanWrapper;
 import com.lagou.edu.core.WzwBeanFactory;
+import com.lagou.edu.utils.SpringUtils;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -62,26 +63,21 @@ public class WzwApplicationContext extends WzwDefaultListableBeanFactory impleme
     @Override
     public Object getBean(String beanName) throws Exception {
         WzwBeanDefinition beanDefinition = super.beanDefinitionMap.get(beanName);
-        try {
-            WzwBeanPostProcessor beanPostProcessor = new WzwBeanPostProcessor();
-            Object instance = instantiateBean(beanDefinition);
-            if (null == instance) {
-                return null;
-            }
-            beanPostProcessor.postProcessBeforeInitialization(instance, beanName);
-            WzwBeanWrapper beanWrapper = new WzwBeanWrapper(instance);
-            this.factoryBeanInstanceCache.put(beanName, beanWrapper);
-            beanPostProcessor.postProcessAfterInitialization(instance, beanName);
-            polulateBean(beanName, instance);
-            return this.factoryBeanInstanceCache.get(beanName).getWrappedInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
+        WzwBeanPostProcessor beanPostProcessor = new WzwBeanPostProcessor();
+        Object instance = instantiateBean(beanDefinition);
+        if (null == instance) {
             return null;
         }
+        beanPostProcessor.postProcessBeforeInitialization(instance, beanName);
+        WzwBeanWrapper beanWrapper = new WzwBeanWrapper(instance);
+        this.factoryBeanInstanceCache.put(beanName, beanWrapper);
+        beanPostProcessor.postProcessAfterInitialization(instance, beanName);
+        polulateBean(beanName, instance);
+        return this.factoryBeanInstanceCache.get(beanName).getWrappedInstance();
     }
 
 
-    private void polulateBean(String beanName, Object instance) {
+    private void polulateBean(String beanName, Object instance) throws Exception {
         Class clazz = instance.getClass();
         if (!clazz.isAnnotationPresent(WzwService.class)) {
             return;
@@ -97,46 +93,53 @@ public class WzwApplicationContext extends WzwDefaultListableBeanFactory impleme
                 autowiredBeanName = field.getType().getName();
             }
             field.setAccessible(true);
-            try {
-                Class<?> reflectClass = Class.forName(autowiredBeanName);
+            Class<?> reflectClass = Class.forName(autowiredBeanName);
+            if (null == this.factoryBeanInstanceCache.get(autowiredBeanName)) {
                 if (reflectClass.isInterface()) {
-                    List<String> implClasses = findImplClass(reflectClass, "com.lagou.edu");//多继承实现需要通过设定name值或Qulifier实现，此处暂不处理
-                    if (null == this.factoryBeanInstanceCache.get(autowiredBeanName)) {
-                        getBean(implClasses.get(0));//此处循环依赖暂不处理
-                    }
+                    List<String> implClasses = Lists.newArrayList();
+                    findImplClass(reflectClass, "com.lagou.edu", implClasses);//多继承实现需要通过设定name值或Qulifier实现，此处暂不处理
+                    Class<?> implClass = Class.forName(implClasses.get(0));
+                    getBean(implClass.getName());//此处循环依赖暂不处理
+                    getBean(SpringUtils.toLowerFirstCase(implClass.getSimpleName()));
+                }else {
+                    Class<?> implClass = Class.forName(autowiredBeanName);
+                    getBean(implClass.getName());//此处循环依赖暂不处理
+                    getBean(SpringUtils.toLowerFirstCase(implClass.getSimpleName()));
                 }
-                field.set(instance, this.factoryBeanInstanceCache.get(autowiredBeanName).getWrappedInstance());
-            } catch (Exception e) {
-                e.printStackTrace();
             }
+            field.set(instance, this.factoryBeanInstanceCache.get(autowiredBeanName).getWrappedInstance());
         }
     }
 
-    private List<String> findImplClass(Class<?> reflectClass, String basePackage) {
-        List<String> implClasses = Lists.newArrayList();
+    private void findImplClass(Class<?> reflectClass, String basePackage, List<String> implClasses) {
         URL url = reflectClass.getClass().getResource("/" + basePackage.replaceAll("\\.", "/"));
         File dir = new File(url.getFile());
         //遍历包下面所有文件
         for (File file : dir.listFiles()) {
             if (file.isDirectory()) {
                 //递归扫描
-                findImplClass(reflectClass, basePackage + "." + file.getName());
+                findImplClass(reflectClass, basePackage + "." + file.getName(), implClasses);
             } else {
                 String className = basePackage + "." + file.getName().replace(".class", "");
                 try {
-                    Class<?> tmpClass = Class.forName(className);
-                    if (reflectClass.isAssignableFrom(tmpClass)) {
-                        implClasses.add(className);
+                    Class<?>[] interfaces = Class.forName(className).getInterfaces();
+                    for (Integer interCount = 0; interCount < interfaces.length; interCount++) {
+                        if (interfaces[interCount].isAssignableFrom(reflectClass)) {
+                            implClasses.add(className);
+                            break;
+                        }
                     }
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
             }
         }
-        return implClasses;
     }
 
     private Object instantiateBean(WzwBeanDefinition beanDefinition) {
+        if (null == beanDefinition) {
+            return null;
+        }
         Object instance = null;
         String className = beanDefinition.getBeanClassName();
         try {

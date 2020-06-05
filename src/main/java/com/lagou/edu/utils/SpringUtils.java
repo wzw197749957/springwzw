@@ -5,13 +5,14 @@ import java.util.List;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * JSON工具类（使用的是jackson实现的）
  * @author 应癫
  */
-public class JsonUtils {
+public class SpringUtils {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
@@ -63,6 +64,15 @@ public class JsonUtils {
 		}
     	
     	return null;
+    }
+
+    public static String toLowerFirstCase(String simpleName) {
+        if(StringUtils.isBlank(simpleName)){
+            return "";
+        }
+        char[] chars = simpleName.toCharArray();
+        chars[0] += 32;
+        return String.valueOf(chars);
     }
     
 }

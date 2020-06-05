@@ -1,8 +1,10 @@
 package com.lagou.edu.ioc;
 
+import com.alibaba.druid.support.json.JSONUtils;
 import com.google.common.collect.Lists;
 import com.lagou.edu.anno.WzwService;
 import com.lagou.edu.beans.WzwBeanDefinition;
+import com.lagou.edu.utils.SpringUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
@@ -50,7 +52,7 @@ public class WzwBeanDefinitionReader {
                 if (beanClass.isInterface()) {
                     continue;
                 }
-                result.add(doCreateBeanDefinition(toLowerFirstCase(beanClass.getSimpleName()), beanClass.getName()));
+                result.add(doCreateBeanDefinition(SpringUtils.toLowerFirstCase(beanClass.getSimpleName()), beanClass.getName()));
                 Class<?>[] interfaces = beanClass.getInterfaces();
                 for (Class<?> i : interfaces) {
                     result.add(doCreateBeanDefinition(i.getName(), beanClass.getName()));
@@ -69,12 +71,5 @@ public class WzwBeanDefinitionReader {
         return beanDefinition;
     }
 
-    private String toLowerFirstCase(String simpleName) {
-        if(StringUtils.isBlank(simpleName)){
-            return "";
-        }
-        char[] chars = simpleName.toCharArray();
-        chars[0] += 32;
-        return String.valueOf(chars);
-    }
+
 }

@@ -1,9 +1,8 @@
 package com.lagou.edu.servlet;
 
-import com.lagou.edu.utils.JsonUtils;
+import com.lagou.edu.utils.SpringUtils;
 import com.lagou.edu.pojo.Result;
 import com.lagou.edu.service.TransferService;
-import org.springframework.web.bind.support.WebExchangeBindException;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -60,6 +59,6 @@ public class TransferServlet extends HttpServlet {
 
         // 响应
         resp.setContentType("application/json;charset=utf-8");
-        resp.getWriter().print(JsonUtils.object2Json(result));
+        resp.getWriter().print(SpringUtils.object2Json(result));
     }
 }

@@ -33,39 +33,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="791c321a-041d-49ed-821e-2f089c97f874" name="Default Changelist" comment="add">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_9.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/springwzw.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/springwzw.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lagou/edu/ioc/WzwApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lagou/edu/ioc/WzwApplicationContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lagou/edu/ioc/WzwBeanDefinitionReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lagou/edu/ioc/WzwBeanDefinitionReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/IocTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lagou/edu/IocTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/applicationContextWzw.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/anno/WzwAutowired.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/anno/WzwService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/beans/WzwBeanDefinition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/beans/WzwBeanWrapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/core/WzwBeanFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/core/WzwFactoryBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/dao/AccountDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/dao/impl/JdbcTemplateDaoImpl$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/dao/impl/JdbcTemplateDaoImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/ioc/WzwAbstractApplicationContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/ioc/WzwApplicationContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/ioc/WzwApplicationContextAware.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/ioc/WzwBeanDefinitionReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/ioc/WzwBeanPostProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/ioc/WzwDefaultListableBeanFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/pojo/Account.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/pojo/Result.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/service/HomeworkService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/service/TransferService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/service/impl/TransferServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/servlet/TransferServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/utils/JsonUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/jdbc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/IocTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/ioc/WzwApplicationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lagou/edu/ioc/WzwApplicationContext.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,6 +107,7 @@
       <workItem from="1591324202407" duration="100000" />
       <workItem from="1591324316992" duration="29000" />
       <workItem from="1591324361724" duration="3976000" />
+      <workItem from="1591335346614" duration="600000" />
     </task>
     <task id="LOCAL-00001" summary="add">
       <created>1591065555446</created>

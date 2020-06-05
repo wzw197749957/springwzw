@@ -26,6 +26,9 @@ public class WzwBeanDefinitionReader {
     }
 
     private void doScanner(String basePackage) {
+        if(basePackage.equals("com.lagou.edu.ioc")){
+            return;
+        }
         URL url = this.getClass().getResource("/" + basePackage.replaceAll("\\.", "/"));
         File dir = new File(url.getFile());
         //遍历包下面所有文件

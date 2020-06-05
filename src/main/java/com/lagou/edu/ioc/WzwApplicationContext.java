@@ -101,10 +101,12 @@ public class WzwApplicationContext extends WzwDefaultListableBeanFactory impleme
                     Class<?> implClass = Class.forName(implClasses.get(0));
                     getBean(implClass.getName());//此处循环依赖暂不处理
                     getBean(SpringUtils.toLowerFirstCase(implClass.getSimpleName()));
+                    autowiredBeanName=SpringUtils.toLowerFirstCase(implClass.getSimpleName());
                 }else {
                     Class<?> implClass = Class.forName(autowiredBeanName);
                     getBean(implClass.getName());//此处循环依赖暂不处理
                     getBean(SpringUtils.toLowerFirstCase(implClass.getSimpleName()));
+                    autowiredBeanName=SpringUtils.toLowerFirstCase(implClass.getSimpleName());
                 }
             }
             field.set(instance, this.factoryBeanInstanceCache.get(autowiredBeanName).getWrappedInstance());

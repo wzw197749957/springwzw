@@ -1,3 +1,5 @@
+package com.lagou.edu;
+
 import com.lagou.edu.dao.AccountDao;
 import com.lagou.edu.ioc.WzwApplicationContext;
 import com.lagou.edu.service.HomeworkService;

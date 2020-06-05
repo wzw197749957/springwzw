@@ -32,16 +32,40 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="791c321a-041d-49ed-821e-2f089c97f874" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lagou/edu/dao/impl/JdbcTemplateDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lagou/edu/dao/impl/JdbcTemplateDaoImpl.java" afterDir="false" />
+    <list default="true" id="791c321a-041d-49ed-821e-2f089c97f874" name="Default Changelist" comment="add">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/springwzw.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/springwzw.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lagou/edu/ioc/WzwApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lagou/edu/ioc/WzwApplicationContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lagou/edu/service/AutowireService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lagou/edu/service/HomeworkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lagou/edu/service/HomeworkService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lagou/edu/service/impl/TransferServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lagou/edu/service/impl/TransferServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/IocTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/IocTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lagou/edu/ioc/WzwBeanDefinitionReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lagou/edu/ioc/WzwBeanDefinitionReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/IocTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lagou/edu/IocTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/applicationContextWzw.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/anno/WzwAutowired.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/anno/WzwService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/beans/WzwBeanDefinition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/beans/WzwBeanWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/core/WzwBeanFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/core/WzwFactoryBean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/dao/AccountDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/dao/impl/JdbcTemplateDaoImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/dao/impl/JdbcTemplateDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/ioc/WzwAbstractApplicationContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/ioc/WzwApplicationContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/ioc/WzwApplicationContextAware.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/ioc/WzwBeanDefinitionReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/ioc/WzwBeanPostProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/ioc/WzwDefaultListableBeanFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/pojo/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/pojo/Result.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/service/HomeworkService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/service/TransferService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/service/impl/TransferServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/servlet/TransferServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lagou/edu/utils/JsonUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jdbc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/IocTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +75,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1chYkTmI05R66YUfh6Hb896pobj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -59,16 +90,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.lagou.edu" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="IocTest.testAnno" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springwzw" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IocTest" />
+      <option name="PACKAGE_NAME" value="com.lagou.edu" />
+      <option name="MAIN_CLASS_NAME" value="com.lagou.edu.IocTest" />
       <option name="METHOD_NAME" value="testAnno" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -93,8 +130,24 @@
       <updated>1590982434376</updated>
       <workItem from="1590982435735" duration="613000" />
       <workItem from="1591001875923" duration="596000" />
-      <workItem from="1591061823847" duration="3636000" />
+      <workItem from="1591061823847" duration="5054000" />
+      <workItem from="1591249258146" duration="3867000" />
+      <workItem from="1591262171183" duration="645000" />
+      <workItem from="1591321682908" duration="1481000" />
+      <workItem from="1591323934462" duration="176000" />
+      <workItem from="1591324133902" duration="54000" />
+      <workItem from="1591324202407" duration="100000" />
+      <workItem from="1591324316992" duration="29000" />
+      <workItem from="1591324361724" duration="3976000" />
     </task>
+    <task id="LOCAL-00001" summary="add">
+      <created>1591065555446</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1591065555446</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,80 +163,100 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add" />
+    <option name="LAST_COMMIT_MESSAGE" value="add" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="544" y="279" width="448" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1591062436832">
+    <state x="574" y="118" key="#com.intellij.ide.util.MemberChooser" timestamp="1591326877098">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="544" y="279" width="448" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1591062436832" />
+    <state x="574" y="118" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1591326877098" />
+    <state x="499" y="191" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1591324727985">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="191" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1591324727985" />
+    <state x="547" y="103" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog" timestamp="1591325813703">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="547" y="103" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog/0.0.1536.824@0.0.1536.824" timestamp="1591325813703" />
+    <state x="544" y="279" width="448" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1591324730113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="544" y="279" width="448" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1591324730113" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591062150364">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1591062150364" />
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1591065162690">
+    <state x="549" y="153" key="FileChooserDialogImpl" timestamp="1591324585467">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591065162690" />
-    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1591065162690">
+    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591324585467" />
+    <state width="1493" height="228" key="GridCell.Tab.0.bottom" timestamp="1591327528804">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591065162690" />
-    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1591065162690">
+    <state width="1493" height="228" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591327528804" />
+    <state width="1493" height="228" key="GridCell.Tab.0.center" timestamp="1591327528804">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591065162690" />
-    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1591065162690">
+    <state width="1493" height="228" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591327528804" />
+    <state width="1493" height="228" key="GridCell.Tab.0.left" timestamp="1591327528804">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591065162690" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1591065163295">
+    <state width="1493" height="228" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591327528804" />
+    <state width="1493" height="228" key="GridCell.Tab.0.right" timestamp="1591327528804">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591065163295" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1591065163295">
+    <state width="1493" height="228" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591327528804" />
+    <state width="1493" height="228" key="GridCell.Tab.1.bottom" timestamp="1591327531402">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1591065163295" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1591065163295">
+    <state width="1493" height="228" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591327531402" />
+    <state width="1493" height="228" key="GridCell.Tab.1.center" timestamp="1591327531402">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1591065163295" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1591065163295">
+    <state width="1493" height="228" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1591327531402" />
+    <state width="1493" height="228" key="GridCell.Tab.1.left" timestamp="1591327531402">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1591065163295" />
-    <state x="270" y="57" key="SettingsEditor" timestamp="1591064335711">
+    <state width="1493" height="228" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1591327531402" />
+    <state width="1493" height="228" key="GridCell.Tab.1.right" timestamp="1591327531402">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1591064335711" />
+    <state width="1493" height="228" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1591327531402" />
+    <state x="270" y="57" key="SettingsEditor" timestamp="1591324608725">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1591324608725" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1591065889775">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1591065889775" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/IocTest.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/lagou/edu/ioc/WzwApplicationContext.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/lagou/edu/ioc/WzwApplicationContext.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/lagou/edu/ioc/WzwApplicationContext.java</url>
-          <line>76</line>
+          <line>74</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/lagou/edu/ioc/WzwApplicationContext.java</url>
-          <line>86</line>
+          <line>84</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/lagou/edu/IocTest.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/lagou/edu/ioc/WzwApplicationContext.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

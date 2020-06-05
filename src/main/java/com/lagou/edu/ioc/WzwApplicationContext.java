@@ -6,24 +6,22 @@ import com.lagou.edu.anno.WzwService;
 import com.lagou.edu.beans.WzwBeanDefinition;
 import com.lagou.edu.beans.WzwBeanWrapper;
 import com.lagou.edu.core.WzwBeanFactory;
-import com.lagou.edu.service.TransferService;
-import com.sun.istack.internal.NotNull;
 
 import java.io.File;
 import java.lang.reflect.Field;
 import java.net.URL;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class WzwApplicationContext extends WzwDefaultListableBeanFactory implements WzwBeanFactory {
-    private String[] configLocations;
     private WzwBeanDefinitionReader reader;
 
     private Map<String, Object> factoryBeanObjectCache = new ConcurrentHashMap<String, Object>();
     private Map<String, WzwBeanWrapper> factoryBeanInstanceCache = new ConcurrentHashMap<String, WzwBeanWrapper>();
 
     public WzwApplicationContext() {
-//        this.configLocations = configLocations;
         try {
             refresh();
         } catch (Exception e) {
@@ -100,23 +98,42 @@ public class WzwApplicationContext extends WzwDefaultListableBeanFactory impleme
             }
             field.setAccessible(true);
             try {
-                Class<?> target=Class.forName(autowiredBeanName);
-                if(target.isInterface()){
-                    field.set(instance, new WzwBeanWrapper(getInterfaceImpls(target).get(0).newInstance()));
-                }else {
-                    field.set(instance, new WzwBeanWrapper(Class.forName(autowiredBeanName).newInstance()));
+                Class<?> reflectClass = Class.forName(autowiredBeanName);
+                if (reflectClass.isInterface()) {
+                    List<String> implClasses = findImplClass(reflectClass, "com.lagou.edu");//多继承实现需要通过设定name值或Qulifier实现，此处暂不处理
+                    if (null == this.factoryBeanInstanceCache.get(autowiredBeanName)) {
+                        getBean(implClasses.get(0));//此处循环依赖暂不处理
+                    }
                 }
-//                field.set(instance, this.factoryBeanInstanceCache.get(autowiredBeanName).getWrappedInstance());
-            } catch (IllegalAccessException | ClassNotFoundException | InstantiationException e) {
+                field.set(instance, this.factoryBeanInstanceCache.get(autowiredBeanName).getWrappedInstance());
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private Class<?> getInterfaceImpls(Class<?> target){
-        if(target.){
-
+    private List<String> findImplClass(Class<?> reflectClass, String basePackage) {
+        List<String> implClasses = Lists.newArrayList();
+        URL url = reflectClass.getClass().getResource("/" + basePackage.replaceAll("\\.", "/"));
+        File dir = new File(url.getFile());
+        //遍历包下面所有文件
+        for (File file : dir.listFiles()) {
+            if (file.isDirectory()) {
+                //递归扫描
+                findImplClass(reflectClass, basePackage + "." + file.getName());
+            } else {
+                String className = basePackage + "." + file.getName().replace(".class", "");
+                try {
+                    Class<?> tmpClass = Class.forName(className);
+                    if (reflectClass.isAssignableFrom(tmpClass)) {
+                        implClasses.add(className);
+                    }
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+        return implClasses;
     }
 
     private Object instantiateBean(WzwBeanDefinition beanDefinition) {

@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.Properties;
 
 /**
@@ -44,9 +43,12 @@ public class JdbcTemplateDaoImpl implements AccountDao {
     @Override
     @WzwTransactional
     public void updateAccountByCardNo(Connection conn, Account account) throws Exception {
-        Statement statement = conn.createStatement();
         String sql = "update account set money=? where cardNo=?";
-        statement.executeUpdate(sql);
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, account.getMoney());
+        ps.setString(2, account.getCardNo());
+        ps.executeUpdate();
+        throw new Exception();
     }
 
     private DataSource getDataSource() {

@@ -13,7 +13,7 @@ public class WzwBeanPostProcessor {
     }
 
     public Object postProcessAfterInitialization(Object bean, String beanName) throws Exception {
-        if(beanName.equals("jdbcTemplateDaoImpl")){
+        if (beanName.equals("jdbcTemplateDaoImpl")) {
             Class clazz = bean.getClass();
             Method[] methods = clazz.getDeclaredMethods();
             for (Method method : methods) {
@@ -21,18 +21,20 @@ public class WzwBeanPostProcessor {
                     bean = Proxy.newProxyInstance(
                             clazz.getClassLoader(),
                             clazz.getInterfaces(),
-                            (proxy, method1, args) -> {
-                                // TODO Auto-generated method stub
-                                Connection conn = (Connection) args[0];
-                                conn.setAutoCommit(false);
-                                try {
-                                    Object proxyObject=method1.invoke(clazz, args);
-                                    conn.commit();
-                                    return proxyObject;
-                                } catch (Exception e) {
-                                    conn.rollback();
+                            new InvocationHandler() {
+                                @Override
+                                public Object invoke(Object proxy, Method method1, Object[] args) throws Throwable {
+                                    Connection conn = (Connection) args[0];
+                                    conn.setAutoCommit(false);
+                                    try {
+                                        Object proxyObject = method1.invoke(clazz, args);
+                                        conn.commit();
+                                        return proxyObject;
+                                    } catch (Exception e) {
+                                        conn.rollback();
+                                    }
+                                    return null;
                                 }
-                                return null;
                             });
                 }
             }
